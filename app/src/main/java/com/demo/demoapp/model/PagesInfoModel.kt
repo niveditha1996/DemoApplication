@@ -1,5 +1,6 @@
 package com.demo.demoapp.model
 
+import com.demo.demoapp.roomdatabase.model.UserInfoModel
 import com.google.gson.annotations.Expose
 
 import com.google.gson.annotations.SerializedName

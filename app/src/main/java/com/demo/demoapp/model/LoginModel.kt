@@ -4,9 +4,6 @@ import com.google.gson.annotations.Expose
 
 import com.google.gson.annotations.SerializedName
 
-
-
-
 class LoginModel {
 
     @SerializedName("token")
@@ -16,6 +13,5 @@ class LoginModel {
     @SerializedName("error")
     @Expose
     val error: String? = null
-
 
 }

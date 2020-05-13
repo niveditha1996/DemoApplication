@@ -8,26 +8,23 @@ import androidx.lifecycle.MutableLiveData
 import com.demo.demoapp.apicall.ApiInterface
 import com.demo.demoapp.apicall.ServiceCallBack
 import com.demo.demoapp.model.PagesInfoModel
-import com.demo.demoapp.model.UserInfoModel
-import com.demo.demoapp.respository.UserRepo
+import com.demo.demoapp.roomdatabase.model.UserInfoModel
+import com.demo.demoapp.roomdatabase.respository.UserRepo
 
 
-class UserInfoViewModel(application: Application): AndroidViewModel(application) ,
+class UserInfoViewModel(application: Application) : AndroidViewModel(application),
     ServiceCallBack {
-    var userInfoLiveData= MutableLiveData<PagesInfoModel>()
+    var userInfoLiveData = MutableLiveData<PagesInfoModel>()
     private var repository: UserRepo = UserRepo(application)
     private var allUsers: LiveData<List<UserInfoModel>> = repository.getAllUsers()
 
-    fun apiCallforUserInfo(page:Int)
-    {
+    fun apiCallforUserInfo(page: Int) {
         ApiInterface.callAPI(
             ApiInterface.getApi().getUserList(
                 page
             ), 2, this
         )
     }
-
-
 
     fun insert(user: UserInfoModel) {
         repository.insert(user)
@@ -38,17 +35,12 @@ class UserInfoViewModel(application: Application): AndroidViewModel(application)
     }
 
     override fun handleResponse(t: Any?, resultCode: Int) {
-
-
         userInfoLiveData.postValue(t as PagesInfoModel)
-        Log.e("onresponse","responded")
-
+       // Log.e("onresponse", "responded")
     }
 
-
-
     override fun handleError(error: Throwable?, resultCode: Int) {
-Log.e("error",error.toString())
+        //Log.e("error", error.toString())
 
     }
 }

@@ -21,7 +21,7 @@ public class ApiInterface {
 
     companion object {
 
-        var retrofit: Retrofit? = null
+
         var serviceCall: ApiInterface? = null
 
         fun getInstance(): ApiInterface? {
@@ -33,9 +33,6 @@ public class ApiInterface {
         }
 
         fun getApi(): ServiceAPI {
-
-
-
 
 
             val interceptor = HttpLoggingInterceptor()
@@ -60,38 +57,31 @@ public class ApiInterface {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
             return retrofit.create(ServiceAPI::class.java)
-
-
         }
 
+        fun <T> callAPI(call: Call<T>, resultCode: Int, serviceCallBack: ServiceCallBack) {
+            call.enqueue(object : Callback<T> {
+                override fun onResponse(
+                    call: Call<T>,
+                    response: Response<T>
+                ) {
+                    serviceCallBack.handleResponse(response.body(), resultCode)
+                }
 
-     fun <T> callAPI(call: Call<T>, resultCode: Int, serviceCallBack: ServiceCallBack) {
-         val gson=Gson()
-        call.enqueue(object : Callback<T> {
-            override fun onResponse(
-                call: Call<T>,
-                response: Response<T>
-            ) {
-                serviceCallBack.handleResponse(response.body(), resultCode)
-            }
-
-            override fun onFailure(call: Call<T>, t: Throwable) {
-                serviceCallBack.handleError(t, resultCode)
-            }
-        })
+                override fun onFailure(call: Call<T>, t: Throwable) {
+                    serviceCallBack.handleError(t, resultCode)
+                }
+            })
+        }
     }
-}
 
-    interface ServiceAPI
-    {
-
+    interface ServiceAPI {
         @Headers("Content-Type: application/json")
         @POST("/api/login")
-        fun login(@Body body:String):Call<LoginModel>
-
+        fun login(@Body body: String): Call<LoginModel>
 
         @GET("/api/users")
-        fun getUserList(@Query("page") page:Int):Call<PagesInfoModel>
+        fun getUserList(@Query("page") page: Int): Call<PagesInfoModel>
 
     }
 

@@ -7,14 +7,18 @@ import com.demo.demoapp.R
 
 class CommonUtil {
 
-    companion object{
+    companion object {
 
         var activeFragmentTag = ""
 
 
-        fun launchFragment(tag: String, isBackActive: Boolean, fragmentManager: FragmentManager, activeFragment: Fragment) {
+        fun launchFragment(
+            tag: String,
+            isBackActive: Boolean,
+            fragmentManager: FragmentManager,
+            activeFragment: Fragment
+        ) {
             try {
-                // App.homeActivity?.isBackStack=isBackActive
                 Log.e("launchedFragment: ", tag)
                 if (fragmentManager.findFragmentByTag(tag) != null) {
                     activeFragmentTag = tag
@@ -25,13 +29,11 @@ class CommonUtil {
                 }
                 val fragmentTransaction = fragmentManager.beginTransaction()
                 fragmentTransaction.replace(R.id.fragmentContainer, activeFragment, tag)
-                if (isBackActive)
-                {
+                if (isBackActive) {
 
                     fragmentTransaction.addToBackStack(null)
 
-                }
-                else{
+                } else {
 
                 }
                 fragmentTransaction.commit()

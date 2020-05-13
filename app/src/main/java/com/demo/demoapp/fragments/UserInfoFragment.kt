@@ -15,23 +15,23 @@ class UserInfoFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
-        var avatar=""
-        var email=""
-        var fname=""
-        var lname=""
-        var id=0
-        var binding:FragmentUserInfoBinding?=null
+        savedInstanceState: Bundle?
+    ): View? {
+        var avatar = ""
+        var email = ""
+        var fname = ""
+        var lname = ""
+        var id = 0
+        var binding: FragmentUserInfoBinding? = null
 
-        binding= DataBindingUtil.inflate( inflater , R.layout.fragment_user_info, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_info, container, false)
 
-        if(arguments!=null)
-        {
-            avatar= arguments?.getString("avatar") as String
-            fname= arguments?.getString("firstname") as String
-            lname= arguments?.getString("lastname") as String
-            id= arguments?.getInt("id")!!
-            email= arguments?.getString("email") as String
+        if (arguments != null) {
+            avatar = arguments?.getString("avatar") as String
+            fname = arguments?.getString("firstname") as String
+            lname = arguments?.getString("lastname") as String
+            id = arguments?.getInt("id")!!
+            email = arguments?.getString("email") as String
 
         }
 
@@ -40,10 +40,10 @@ class UserInfoFragment : Fragment() {
             .load(avatar)
             .into(binding.ivAvatar)
 
-        binding?.tvEmail?.text=email
-        binding?.tvFname?.text=fname
-        binding?.tvLname?.text=lname
-        binding?.tvIdofUser?.text=id.toString()
+        binding?.tvEmail?.text = email
+        binding?.tvFname?.text = fname
+        binding?.tvLname?.text = lname
+        binding?.tvIdofUser?.text = id.toString()
 
         return binding!!.root
     }

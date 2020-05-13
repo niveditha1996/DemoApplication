@@ -1,14 +1,13 @@
-package com.demo.demoapp.respository
+package com.demo.demoapp.roomdatabase.respository
 
 import android.app.Application
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 import com.demo.demoapp.roomdatabase.AppDb
-import com.demo.demoapp.dao.UserDao
-import com.demo.demoapp.model.UserInfoModel
+import com.demo.demoapp.roomdatabase.dao.UserDao
+import com.demo.demoapp.roomdatabase.model.UserInfoModel
 
 class UserRepo(application: Application) {
-
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
 

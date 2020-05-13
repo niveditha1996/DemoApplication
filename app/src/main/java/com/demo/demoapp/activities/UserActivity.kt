@@ -10,7 +10,7 @@ import com.demo.demoapp.R
 import com.demo.demoapp.commonUtil.CommonUtil
 import com.demo.demoapp.model.UserInfoModel
 import com.demo.demoapp.viewmodel.UserInfoViewModel
-import com.demo.fragments.EmailFragment
+import com.demo.demoapp.fragments.EmailFragment
 import com.google.gson.Gson
 import java.util.*
 

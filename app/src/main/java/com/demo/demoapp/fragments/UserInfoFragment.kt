@@ -1,8 +1,6 @@
-package com.demo.fragments
+package com.demo.demoapp.fragments
 
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +9,6 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.demo.demoapp.R
 import com.demo.demoapp.databinding.FragmentUserInfoBinding
-import com.demo.demoapp.model.UserInfoModel
-import java.io.InputStream
-import java.net.URL
 
 
 class UserInfoFragment : Fragment() {
